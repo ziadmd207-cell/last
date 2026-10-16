@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 223 49% 10%;
+    --foreground: 220 13% 91%;
+    --card: 221 51% 16%;
+    --card-foreground: 220 13% 91%;
+    --popover: 221 51% 13%;
+    --popover-foreground: 220 13% 91%;
+    --primary: 45 100% 51%;
+    --primary-foreground: 223 49% 10%;
+    --secondary: 218 27% 32%;
+    --secondary-foreground: 220 13% 91%;
+    --muted: 221 40% 20%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 46 100% 82%;
+    --accent-foreground: 223 49% 10%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 220 13% 91%;
+    --border: 221 35% 26%;
+    --input: 221 35% 28%;
+    --ring: 45 100% 51%;
+    --radius: 0.75rem;
+    --font-heading: "Space Grotesk", "Cairo", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Geist", "Cairo", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Space Grotesk", "Cairo", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    --zeus-midnight: 223 49% 10%;
+    --zeus-navy: 221 51% 16%;
+    --zeus-steel: 218 27% 32%;
+    --zeus-gold: 45 100% 51%;
+    --zeus-orange: 38 92% 50%;
+    --zeus-brightgold: 45 100% 65%;
+    --zeus-softgold: 46 100% 82%;
+    --zeus-cloud: 220 13% 91%;
+  }
+
+  [data-theme="light"] {
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 45 96% 48%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 220 14% 94%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 14% 92%;
+    --muted-foreground: 220 9% 38%;
+    --accent: 45 96% 88%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 82%;
+    --input: 220 13% 84%;
+    --ring: 45 96% 48%;
+    --zeus-midnight: 210 20% 98%;
+    --zeus-navy: 0 0% 100%;
+    --zeus-steel: 220 9% 45%;
+    --zeus-gold: 45 96% 48%;
+    --zeus-orange: 38 92% 48%;
+    --zeus-brightgold: 38 85% 42%;
+    --zeus-softgold: 45 80% 92%;
+    --zeus-cloud: 222 47% 11%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      radial-gradient(60rem 60rem at 80% -10%, rgba(255, 193, 7, 0.08), transparent 60%),
+      radial-gradient(50rem 50rem at -10% 10%, rgba(20, 33, 61, 0.6), transparent 50%);
+    background-attachment: fixed;
+  }
+  [data-theme="light"] body {
+    background-image:
+      radial-gradient(50rem 50rem at 80% -10%, rgba(255, 193, 7, 0.06), transparent 60%),
+      radial-gradient(40rem 40rem at -10% 10%, rgba(20, 33, 61, 0.04), transparent 50%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4, h5 { @apply font-heading; }
+  ::selection { background: rgba(255, 193, 7, 0.4); color: #0D1426; }
+}
+
+@layer components {
+  .zeus-glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/70 rounded-2xl;
+  }
+  .zeus-gold-text {
+    background: linear-gradient(135deg, #FFD54F 0%, #FFC107 45%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .zeus-gold-border {
+    border: 1px solid rgba(255, 193, 7, 0.45);
+    box-shadow: 0 0 0 1px rgba(255, 193, 7, 0.1), 0 8px 30px -12px rgba(255, 193, 7, 0.35);
+  }
+  .zeus-grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 193, 7, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 193, 7, 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up { animation: fadeUp 0.5s ease-out both; }
+  .animate-fade-in { animation: fadeIn 0.4s ease-out both; }
+  .animate-pop { animation: pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-pulse-soft { animation: pulseSoft 2.4s ease-in-out infinite; }
+  .animate-typing { animation: typing 1.2s steps(40) infinite; }
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes pulseSoft { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 193, 7, 0.35); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 193, 7, 0.55); }
